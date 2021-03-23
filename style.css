@@ -1,0 +1,208 @@
+:root {
+  /* 자주 쓰는 항목들을 변수로 묶어서 지정하여 Consistent(한결같은, 일정한)하게 디자인 할 수 있도록 도와줌
+    /* Color */
+  --white-color: #fff;
+  --black-color: #140a00;
+  --blue-color: #045fd4;
+  --red-color: #ff0000;
+  --grey-dark-color: #909090;
+  --grey-light-color: #e0e0e0;
+  /* color picker 툴을 이용하면 따라하고 싶은 사이트의 색을 참고할 수 있음 */
+
+  /* Size */
+  --side-padding: 12px;
+  --avatar-size: 36px;
+
+  /* Font Size */
+  --font-large: 18px;
+  --font-medium: 14px;
+  --font-small: 12px;
+  --font-micro: 10px;
+}
+
+* {
+  /* 기본적으로 모든 태그에 적용 */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; /* 박스를 만들었을 때 padding이나 margin을 주었을 때 그것이 포함된 크기로 박스 생성 */
+}
+
+body {
+  font-family: Roboto;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+button:focus {
+  border: none;
+  background-color: var(--white-color);
+  cursor: pointer;
+  outline: none;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--side-padding);
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+header .logo {
+  font-size: var(--font-large);
+}
+
+header .logo i {
+  color: var(--red-color);
+}
+
+header .icons .fa-search {
+  margin-right: var(--side-padding);
+}
+
+/* SASS & LESS
+   해당 라이브러리를 사용하게 되면 앞의 태그를 하나씩 입력하지 않아도 {}를 이용해서 묶어서 사용 가능
+   즉, 작성해야 하는 코드 수를 줄일 수 있음
+*/
+/* 예시
+header {
+    .logo {
+        font-size: var(--font-large);
+    }
+    .icons .fa-search {
+        margin-right: var(--side-padding);
+    }
+}
+*/
+/* Post CSS
+    리액트에서 사용하는 것으로 모듈화 기능 */
+
+/* Video Player */
+.player {
+  /* player 컨테이너를 반응형으로 만들기 */
+  text-align: center;
+  background-color: var(--black-color);
+  position: sticky; /* 화면을 움직여도 비디오 고정 */
+  top: 0; /* position 속성 사용 시 어디에 객체를 고정할 것인지 반드시 설정 해주어야 함 */
+}
+
+.player video {
+  width: 100%;
+  height: 100%;
+  max-width: 1000px; /* 최대로 커질 수 있는 경계선 지정하여 제한 */
+}
+
+.info {
+  padding: var(--side-padding);
+}
+
+.info .metadata .hashtags {
+  display: flex;
+  font-size: var(--font-small);
+  color: var(--blue-color);
+}
+
+.info .metadata .hashtags li {
+  margin-right: var(--side-padding);
+}
+
+.info .metadata .titleAndBtn {
+  display: flex;
+}
+
+.info .metadata .titleAndBtn .title {
+  font-size: var(--font-medium);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-right: var(--side-padding);
+}
+
+.info .metadata .titleAndBtn .moreBtn {
+  height: 100%;
+}
+
+.info .views {
+  font-size: var(--font-small);
+  color: var(--grey-dark-color);
+}
+
+/* Action */
+.info .actions {
+  display: flex;
+  justify-content: space-around;
+  margin: var(--side-padding) 0;
+}
+
+.info .actions button {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-small);
+  color: var(--grey-dark-color);
+}
+
+.info .actions button i {
+  margin: 0 auto; /* margin은 위아래로는 지정하지 않고 양 옆을 auto로 지정하게 되면 item들이 가운데 위치 */
+  /* margin 활용 후 margin-bottom을 설정해주었기 때문에 margin에서 설정한 위아래 0의 값을 오버라이딩 함 */
+  margin-bottom: clalc(var(--side-padding) / 2);
+  /* calc()는 연산식을 이용해서 주어진 크기를 활용한만큼 패딩을 줄 수 있음 */
+  font-size: 16px;
+}
+
+.info .actions button i.active {
+  color: var(--blue-color);
+}
+
+/* Channel Desciption */
+.info .channel {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--grey-light-color);
+  border-bottom: 1px solid var(--grey-light-color);
+}
+
+.info .channel .metadata {
+  display: flex;
+  align-items: center;
+}
+
+.info .channel .metadata img {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+}
+
+.info .channel .metadata .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info .channel .metadata .info .name {
+  font-size: var(--font-medium);
+}
+
+.info .channel .metadata .info .subscribe {
+  font-size: var(--font-small);
+  color: var(--grey-dark-color);
+}
+
+.info .channel .subscribe {
+  text-transform: uppercase;
+  color: var(--red-color);
+  font-size: var(--font-medium);
+}
+
+/* upNext */
+.upNext {
+  padding: var(--side-padding);
+}
+.upNext > .title {
+  font-size: var(--font-medium);
+  color: var(--grey-dark-color);
+  margin-bottom: var(--side-padding);
+}
