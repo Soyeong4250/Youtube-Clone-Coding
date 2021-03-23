@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="main.js" defer></script>
+    <!-- 모든 파일을 다 받을 때까지 html이 웹에서 표시되지 않는 것을 방지하기 위해 defer 추가 -->
     <title>Youtube Mobile</title>
 </head>
 <body>
@@ -24,20 +26,21 @@
     
     <!-- Video Player -->
     <section class="player">
-        <video controls src="video/※침샘주의※ 매운맛에 홀릭된 벤틀리의 떡볶이 먹방♥ [슈퍼맨이 돌아왔다_The Return of Superman] _ KBS 210117 방송.mp4"></video>
+        <video controls src="video/Croissants.mp4"></video>
     </section>
 
-    <!-- Video Info -->
+    <div class="infoAndUpNext"> <!-- 창의 크기가 커졌을때 Video Info와 Up Next의 flex-direction을 column형식에서 row형식으로 바꾸기 위해 큰 박스를 하나 만들어줌 -->
+        <!-- Video Info -->
     <section class="info">
         <!-- Metadata -->
         <div class="metadata">
             <ul class="hashtags">
-                <li>#Eating</li>
-                <li>#William Bentley</li>
+                <li>#Cooking</li>
+                <li>#Croissants</li>
                 <li>#YoutubeCoding</li>
             </ul>
             <div class="titleAndBtn">
-                <span class="title">
+                <span class="title clamp"> <!-- title에 clamp를 할당했다가 사용자가 클릭하면 clamp를 빼줌 -->
                     Clone Coding: Youtube Mobile Website 유튜브 모바일 웹사이트 따라 
                     만들기 | 프론트엔트 개발자 입문편: HTML, CSS, JavaScript 드림코딩과 
                     함께하는 프론트엔드 실전 입문편
@@ -70,11 +73,13 @@
             <button class="subscribe">subscribe</button>
         </div>
     </section>
+
+    <!-- Up Next -->
     <section class="upNext">
         <span class="title">Up next</span>
         <ul>
             <li class="item">
-                <img src="image/image1.jpg" alt=""/>
+                <div class="img"><img src="image/image1.jpg" alt=""/></div>
                 <div class="info">
                     <span class="title">행복한 강아지 보면서 힐링하기 | 나가서 놀고 싶다</span>
                     <span class="name">소영's 코딩 실습</span>
@@ -83,7 +88,7 @@
                 <button class="moreBtn"><i class="fas fa-ellipsis-v"></i></button>
             </li>
             <li class="item">
-                <img src="image/smiley.jpg" alt=""/>
+                <div class="img"><img src="image/smiley.jpg" alt=""/></div>
                 <div class="info">
                     <span class="title">웃는 연습 많이 해서 자연스럽게 웃기 | 나가서 놀고 싶다</span>
                     <span class="name">소영's 코딩 실습</span>
@@ -92,7 +97,7 @@
                 <button class="moreBtn"><i class="fas fa-ellipsis-v"></i></button>
             </li>
             <li class="item">
-                <img src="image/baby.jpg" alt=""/>
+                <div class="img"><img src="image/baby.jpg" alt=""/></div>
                 <div class="info">
                     <span class="title">잠 잘 오는 음악 들으면서 오늘은 일찍 자야지 | 나가서 놀고 싶다</span>
                     <span class="name">소영's 코딩 실습</span>
@@ -102,5 +107,6 @@
             </li>
         </ul>
     </section>
+    </div>
 </body>
 </html>

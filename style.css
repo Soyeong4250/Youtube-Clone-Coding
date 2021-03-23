@@ -96,7 +96,7 @@ header {
   max-width: 1000px; /* 최대로 커질 수 있는 경계선 지정하여 제한 */
 }
 
-.info {
+body .infoAndUpNext > .info {
   padding: var(--side-padding);
 }
 
@@ -116,15 +116,24 @@ header {
 
 .info .metadata .titleAndBtn .title {
   font-size: var(--font-medium);
+  margin-right: var(--side-padding);
+}
+
+.info .metadata .titleAndBtn .title.clamp {
+  /* 원래는 title에 clamp가 없을 때는 적용이 안되다가 clamp가 생기면 해당 속성들 적용 */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  margin-right: var(--side-padding);
 }
 
 .info .metadata .titleAndBtn .moreBtn {
   height: 100%;
+  transition: transform 300ms ease-in-out; /* 애니메이션 효과 */
+}
+
+.info .metadata .titleAndBtn .moreBtn.clicked {
+  transform: rotate(180deg); /* 180도 돌아가는 움직임 표현 */
 }
 
 .info .views {
@@ -202,7 +211,63 @@ header {
   padding: var(--side-padding);
 }
 .upNext > .title {
+  /* upNext 바로 밑의 자식인 title 클래스에만 적용하기 위해 >를 사용 */
   font-size: var(--font-medium);
   color: var(--grey-dark-color);
-  margin-bottom: var(--side-padding);
+  margin-bottom: calc(var(--side-padding) / 2);
+}
+
+.upNext .item {
+  display: flex;
+  margin-top: var(--side-padding);
+}
+
+.upNext .item .img {
+  flex: 1 1 35%; /* 늘어날 때나 줄어들 때는 각각 1로 설정하고 베이스 크기는 35% */
+  margin-right: var(--side-padding);
+}
+
+.upNext .item .img img {
+  /* 이미지를 반응형으로 만들어주기 */
+  width: 100%;
+}
+
+.upNext .item .info {
+  flex: 1 1 60%;
+}
+
+.upNext .item .moreBtn {
+  flex: 1 1 5%;
+}
+.upNext .item .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.upNext .item .info .title {
+  font-size: var(--font-small);
+}
+
+.upNext .item .info .name,
+.upNext .item .info .views {
+  font-size: var(--font-micro);
+  color: var(--grey-dark-color);
+}
+
+.infoAndUpNext {
+  /* 평소에는 flex-direction이 column 형태 */
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  /* 화면이 768px 이상일 때 이곳에 정의된 내용들 실행 */
+  .infoAndUpNext {
+    flex-direction: row;
+    margin: var(--side-padding) 0;
+  }
+
+  .infoAndUpNext .upNext {
+    flex: 50%;
+  }
 }
